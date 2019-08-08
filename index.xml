@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>(def Think humble, think free) --&gt; </title>
+    <link>https://mallozup.github.io/</link>
+    <description>Recent content on (def Think humble, think free) --&gt; </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 08 Aug 2019 18:25:23 +0200</lastBuildDate>
+    
+	<atom:link href="https://mallozup.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Systems Design: 00-Terraform-libvirt</title>
+      <link>https://mallozup.github.io/posts/systems-draw-00/</link>
+      <pubDate>Thu, 08 Aug 2019 18:25:23 +0200</pubDate>
+      
+      <guid>https://mallozup.github.io/posts/systems-draw-00/</guid>
+      <description>The first 00 unconventional series of Software design.
+Meta:  Project: https://github.com/dmacvicar/terraform-provider-libvirt Description:Terraform provider to provision infrastructure with Linux&amp;rsquo;s KVM using libvirt) Language: golang  I&amp;rsquo;m attempting to draw Software architecture in a unconventional way, because I think describing software with predifined models is somehow restrictive. Here is an humble tentative:
+Analysis: We have 3 layers of abstraction:
+First perspective (number 1 in the picture), the data model and flow in highlevel manner:  terraform-libvirt take as input an HCL file, and transform it in XML format which will then consumed by Libvirt.</description>
+    </item>
+    
+    <item>
+      <title>Hearth Of clojure</title>
+      <link>https://mallozup.github.io/posts/hearthofclojure/</link>
+      <pubDate>Thu, 08 Aug 2019 18:17:35 +0200</pubDate>
+      
+      <guid>https://mallozup.github.io/posts/hearthofclojure/</guid>
+      <description>(DEF STATUS &amp;quot;WORKING IN PROGRESS&amp;quot;)</description>
+    </item>
+    
+  </channel>
+</rss>
