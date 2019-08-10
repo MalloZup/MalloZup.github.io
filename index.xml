@@ -6,10 +6,20 @@
     <description>Recent content on (def Think humble, think free) --&gt; </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 08 Aug 2019 18:25:23 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 10 Aug 2019 18:39:11 +0200</lastBuildDate>
     
 	<atom:link href="https://mallozup.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Heartofclojure</title>
+      <link>https://mallozup.github.io/posts/heartofclojure/</link>
+      <pubDate>Sat, 10 Aug 2019 18:39:11 +0200</pubDate>
+      
+      <guid>https://mallozup.github.io/posts/heartofclojure/</guid>
+      <description>A courageous conference? In the train to Belgium, I was asking me: What is to be a developer? I&amp;rsquo;m a remote developer but during the years, my answer to this question has always changed; like when you revisit a city in different times of your life.
+With a superficial mindset, people might think that a developer is just a person who write code, and our industry it might push people to think like this.</description>
+    </item>
     
     <item>
       <title>Systems Design: 00-Terraform-libvirt</title>
@@ -21,17 +31,6 @@
 Meta:  Project: https://github.com/dmacvicar/terraform-provider-libvirt Description:Terraform provider to provision infrastructure with Linux&amp;rsquo;s KVM using libvirt) Language: golang  I&amp;rsquo;m attempting to draw Software architecture in a unconventional way, because I think describing software with predifined models is somehow restrictive. Here is an humble tentative:
 Analysis: We have 3 layers of abstraction:
 First perspective (number 1 in the picture), the data model and flow in highlevel manner:  terraform-libvirt take as input an HCL file, and transform it in XML format which will then consumed by Libvirt.</description>
-    </item>
-    
-    <item>
-      <title>Heart Of clojure</title>
-      <link>https://mallozup.github.io/posts/hearthofclojure/</link>
-      <pubDate>Thu, 08 Aug 2019 18:17:35 +0200</pubDate>
-      
-      <guid>https://mallozup.github.io/posts/hearthofclojure/</guid>
-      <description>A courageous and adventurous conference?
-In the train to Belgium, I was asking me: What is to be a developer? I&amp;rsquo;m a remote developer but during the years, my answer to this question has always changed; like when you revisit a city in different times of your life.
-With a superficial mindset, people might think that a developer is just a person who write code, and our industry it might push people to think like this.</description>
     </item>
     
   </channel>
