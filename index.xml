@@ -6,10 +6,21 @@
     <description>Recent content on (def Think humble, think free) --&gt; </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Aug 2019 18:39:11 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 15 Aug 2019 14:13:26 +0200</lastBuildDate>
     
 	<atom:link href="https://mallozup.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Systems Design: 01 nREPL clojure</title>
+      <link>https://mallozup.github.io/posts/systems-draw-01-nrepl/</link>
+      <pubDate>Thu, 15 Aug 2019 14:13:26 +0200</pubDate>
+      
+      <guid>https://mallozup.github.io/posts/systems-draw-01-nrepl/</guid>
+      <description>Meta: This blog post is based on commit: https://github.com/nrepl/nrepl/commit/21a3200a5dee737efa0dca7529cd2b69b41c7644 This the 2nd entry of unconventional systems design.
+nREPL The nREPL consist of different (github) repositories: the nREPL server, the clients and middleware extensions.
+The &amp;ldquo;unconventional map&amp;rdquo; I draw for nREPL it should give most of the key ponts to understand nREPL general architecture. It doesn&amp;rsquo;t cover all the details and I think one could draw different maps for the specifics components interactions which will go more in details.</description>
+    </item>
     
     <item>
       <title>Heartofclojure</title>
