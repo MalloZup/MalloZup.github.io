@@ -6,7 +6,7 @@
     <description>Recent content on (def Think humble, think free) --&gt; </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 15 Aug 2019 14:13:26 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 25 Aug 2019 14:13:26 +0200</lastBuildDate>
     
 	<atom:link href="https://mallozup.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Systems Design: 01 nREPL clojure</title>
       <link>https://mallozup.github.io/posts/systems-draw-01-nrepl/</link>
-      <pubDate>Thu, 15 Aug 2019 14:13:26 +0200</pubDate>
+      <pubDate>Sun, 25 Aug 2019 14:13:26 +0200</pubDate>
       
       <guid>https://mallozup.github.io/posts/systems-draw-01-nrepl/</guid>
       <description>Meta: This blog post is based on commit: https://github.com/nrepl/nrepl/commit/21a3200a5dee737efa0dca7529cd2b69b41c7644 This the 2nd entry of unconventional systems design.
