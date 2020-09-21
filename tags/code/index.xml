@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>code on (def Think humble, think free) --&gt; </title>
+    <link>https://mallozup.github.io/tags/code/</link>
+    <description>Recent content in code on (def Think humble, think free) --&gt; </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 21 Sep 2020 18:19:18 +0200</lastBuildDate>
+    
+	<atom:link href="https://mallozup.github.io/tags/code/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Intelligent systems with prometheus</title>
+      <link>https://mallozup.github.io/posts/self-healing-systems-with-prometheus/</link>
+      <pubDate>Mon, 21 Sep 2020 18:19:18 +0200</pubDate>
+      
+      <guid>https://mallozup.github.io/posts/self-healing-systems-with-prometheus/</guid>
+      <description>Intelligent systems with prometheus Cloud native systems are complex systems. Hardware fails, software has bugs, things get wrong.
+In this scenario Prometheus offer a valid help for creating more resilient systems, whichg can auto-heal themself in certains circustances.
+In this demo I will show how you can use the Prometheus stack to improve your systems.
+What do you need for getting the pattern I do simplify lot of things assuming you can setup prometehus/alertmanager and you can create an alert via prometehus ( plenty of doc upstream are avail)</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,10 +6,22 @@
     <description>Recent content in Posts on (def Think humble, think free) --&gt; </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 13 Sep 2019 16:59:40 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 21 Sep 2020 18:19:18 +0200</lastBuildDate>
     
 	<atom:link href="https://mallozup.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Intelligent systems with prometheus</title>
+      <link>https://mallozup.github.io/posts/self-healing-systems-with-prometheus/</link>
+      <pubDate>Mon, 21 Sep 2020 18:19:18 +0200</pubDate>
+      
+      <guid>https://mallozup.github.io/posts/self-healing-systems-with-prometheus/</guid>
+      <description>Intelligent systems with prometheus Cloud native systems are complex systems. Hardware fails, software has bugs, things get wrong.
+In this scenario Prometheus offer a valid help for creating more resilient systems, whichg can auto-heal themself in certains circustances.
+In this demo I will show how you can use the Prometheus stack to improve your systems.
+What do you need for getting the pattern I do simplify lot of things assuming you can setup prometehus/alertmanager and you can create an alert via prometehus ( plenty of doc upstream are avail)</description>
+    </item>
     
     <item>
       <title>Monitoring an HA Cluster</title>
