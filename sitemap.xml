@@ -4,19 +4,24 @@
   
   <url>
     <loc>https://mallozup.github.io/</loc>
-    <lastmod>2020-09-21T18:19:18+02:00</lastmod>
+    <lastmod>2020-09-27T15:46:59+02:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mallozup.github.io/posts/</loc>
+    <lastmod>2020-09-27T15:46:59+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mallozup.github.io/posts/selfhealing-systems-part2/</loc>
+    <lastmod>2020-09-27T15:46:59+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://mallozup.github.io/posts/self-healing-systems-with-prometheus/</loc>
     <lastmod>2020-09-21T18:19:18+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mallozup.github.io/posts/</loc>
-    <lastmod>2020-09-21T18:19:18+02:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>

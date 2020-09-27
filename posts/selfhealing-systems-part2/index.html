@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Dario Maiocchi">
+    <meta name="description" content="Dario Maiocchi&#39;s personal website">
+    <meta name="keywords" content="foss, lisp, linux, clojure and other stuff around software">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Self-healing systems: Instrumenting applications with Prometheus alerts"/>
+<meta name="twitter:description" content="Technical overview how to fire alerts from your application"/>
+
+    <meta property="og:title" content="Self-healing systems: Instrumenting applications with Prometheus alerts" />
+<meta property="og:description" content="Technical overview how to fire alerts from your application" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://mallozup.github.io/posts/selfhealing-systems-part2/" />
+<meta property="article:published_time" content="2020-09-27T15:46:59+02:00" />
+<meta property="article:modified_time" content="2020-09-27T15:46:59+02:00" />
+
+
+    
+      <base href="https://mallozup.github.io/posts/selfhealing-systems-part2/">
+    
+    <title>
+  Self-healing systems: Instrumenting applications with Prometheus alerts · (def Think humble, think free) --&gt; 
+</title>
+
+    
+      <link rel="canonical" href="https://mallozup.github.io/posts/selfhealing-systems-part2/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://mallozup.github.io/css/coder.min.28d751104f30c16da1aa1bb04015cbe662cacfe0d1b01af4f2240ad58580069c.css" integrity="sha256-KNdREE8wwW2hqhuwQBXL5mLKz&#43;DRsBr08iQK1YWABpw=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+      <link rel="stylesheet" href="https://mallozup.github.io/css/custom.css" />
+    
+
+    
+    
+    <link rel="icon" type="image/png" href="https://mallozup.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://mallozup.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.56.3" />
+  </head>
+
+  <body class=" ">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://mallozup.github.io/">
+      (def Think humble, think free) --&gt; 
+    </a>
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://mallozup.github.io/posts/">Blog</a>
+          </li>
+        
+      
+      
+    </ul>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Self-healing systems: Instrumenting applications with Prometheus alerts</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2020-09-27T15:46:59&#43;02:00'>
+                September 27, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              4 minutes read
+            </span>
+          </div>
+          
+          
+        </div>
+      </header>
+
+      <div>
+        
+
+<h1 id="selfhealing-systems-part-2">Selfhealing systems part 2:</h1>
+
+<p>In the previous blog post I covered how to use Prometheus as basis for building selfhealing systems. (<a href="https://mallozup.github.io/posts/self-healing-systems-with-prometheus/">https://mallozup.github.io/posts/self-healing-systems-with-prometheus/</a>)</p>
+
+<p>Today I will explain how you can <strong>instrument your application, creating alert, which are fired inside production code</strong> and then handle them automatically, without human intervention.</p>
+
+<p><img src="https://mallozup.github.io/sh.arch.png" alt="result" /></p>
+
+<h1 id="instrumenting-your-application-with-prometheus-alerts">Instrumenting your application with Prometheus alerts</h1>
+
+<p>A selfhealing system need to have, among others components, 2 components:</p>
+
+<ul>
+<li><p>1) a &ldquo;reactor&rdquo; or alert-handeler component which handle automatically alerts and react with your domain logic on this alerts.</p></li>
+
+<li><p>2) a &ldquo;sensor&rdquo; component which fires alerts if something goes wrong. Distributed on your distributed system and based on your domain logic.</p></li>
+</ul>
+
+<h2 id="a-real-world-example">A real world example:</h2>
+
+<p>Imagine your team build a Web-Application, and for X reasons your web-application is making the disk full.</p>
+
+<h3 id="traditional-way">Traditional way:</h3>
+
+<p>The &ldquo;traditional&rdquo; way would be that at some point, the <strong>backend</strong> of the web-app, will write <strong>some logs</strong> and at some points start to failing.</p>
+
+<p>Consequently the WEBUI will report some errors on the user interface and then the whole operation team will take care on this scenario.</p>
+
+<p><code>Note:</code> maybe some backends are more smarts in some errors handling, I just consider a normal scenario, for sake of simplicity.</p>
+
+<h3 id="the-self-healing-approach">The self-healing approach:</h3>
+
+<p>The self-healing approach is <strong>mostly automated</strong> (unless unexpected failures which cannot solved automatically by software layer are fired).</p>
+
+<p>In the WEBAPP scenario it will be:</p>
+
+<ul>
+<li>When the disk is starting to be full the backend will write logs and <strong>fire automatically an alert to prometheus Alertmanager</strong>. ( for technical explanation see later)</li>
+<li>The alert handler component will handle the full-disk alert fired by your application. ( e.g cleaning up trash files, migrating resources or depending on your architecture).
+In case the alert-handler cannot handle such alert automatically, it will fire a prometheus alert with highest prio, stating that either it failed to self-healing or something went wrong.
+In this case an experienced operator need to take care, analysing logs and taking the right actionl</li>
+</ul>
+
+<p>In a self-healing approach, people will be notfied only when the self-healling systems is broken, or when the alerts cannot be resolved automatically.</p>
+
+<p>This is why, alerts cannot replace logs but they are complementary.</p>
+
+<p>Also it might be useful to instrument your application with alerts in case you don&rsquo;t own the application code or instrumenting this code require to much efforts upstream or in legacy code.
+You can still write your own component.</p>
+
+<h2 id="coding-snippets">Coding snippets:</h2>
+
+<h3 id="how-to-send-an-alert-from-your-business-application">How to send an alert from your business application.</h3>
+
+<p>Prometheus AlertManager offer an API which can be used by your application. (<a href="https://prometheus.io/docs/alerting/latest/clients/">https://prometheus.io/docs/alerting/latest/clients/</a>)</p>
+
+<p>My application backend uses <code>golang</code>. <strong>Note</strong> the code snippets are keeped simple as possible so you can understand them quickly.  They can for sure be improved.</p>
+
+<p>1) Fire alert from your <code>application</code></p>
+
+<pre><code class="language-golang">     if diskFull == True {  // your critical condition
+       log.Error(&quot;full disk ... etc&quot;)
+       // .. 
+	var a *AlertFire
+	a = new(AlertFire)
+	a.Status = &quot;firing&quot;
+	a.Labels.Alertname = &quot;FOO-ALERT&quot;
+	a.Labels.Component = &quot;unit-test component&quot;
+	a.Labels.Severity = &quot;critical&quot;
+	a.Labels.Instance = &quot;test instance&quot;
+	a.Annotations.Summary = &quot;just a test&quot;
+	a.GeneratorURL = &quot;unit-test&quot;
+        // this is your prometheus alertmanager server
+	a.sendAlert(&quot;http://10.162.31.2:9093/api/v1/alerts&quot;)
+    }
+</code></pre>
+
+<p>2)  This &ldquo;logic behind <code>sendAlert</code> method</p>
+
+<pre><code class="language-golang">// AlertFire is the payload from https://prometheus.io/docs/alerting/latest/clients/
+type AlertFire struct {
+	Status string `json:&quot;status&quot;`
+	Labels struct {
+		Alertname string `json:&quot;alertname&quot;`
+		Severity  string `json:&quot;severity&quot;`
+		Component string `json:&quot;component&quot;`
+		Instance  string `json:&quot;instance&quot;`
+	} `json:&quot;labels&quot;`
+	Annotations struct {
+		Summary string `json:&quot;summary&quot;`
+	} `json:&quot;annotations&quot;`
+	GeneratorURL string `json:&quot;generatorURL&quot;`
+}
+
+func (alert *AlertFire) sendAlert(url string) {
+        // You can send 20 alerts, I just send 1 for simplicity
+	alerts := make([]AlertFire, 1)
+	alerts[0] = *alert
+
+        // the alerts are the Json Payload you will send via POST
+	body := alerts
+	buf := new(bytes.Buffer)
+	json.NewEncoder(buf).Encode(body)
+	req, err := http.NewRequest(&quot;POST&quot;, url, buf)
+	if err != nil {
+		log.Errorf(&quot;Error sending http post alert %s&quot;, err)
+	}
+	client := &amp;http.Client{}
+	res, err := client.Do(req)
+	if err != nil {
+		log.Error(err)
+	}
+	log.Infof(&quot;Alert from handler to alertmanager sent %s&quot;, alert.Labels.Alertname)
+	defer res.Body.Close()
+}
+</code></pre>
+
+<hr />
+
+<p>The  code will create following alert. You can handle the alert then automatically or a human need to resolve it
+<img src="https://mallozup.github.io/alert.png" alt="result" /></p>
+
+<h1 id="real-example">Real example:</h1>
+
+<p>The rationanle behind this is that, in my project, I needed to self-handle alerts and also raise an alert in case the handler crash for some reasons, since it necessary no human intervention.</p>
+
+<p><a href="https://github.com/MalloZup/hasap-alerts-handler">https://github.com/MalloZup/hasap-alerts-handler</a></p>
+
+      </div>
+
+      <footer>
+        
+
+
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+      <p>free software, free thoughts</p>
+    
+     © 2020
+    
+       · 
+    
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+
+  </body>
+
+</html>

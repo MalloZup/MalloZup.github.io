@@ -6,10 +6,22 @@
     <description>Recent content in Posts on (def Think humble, think free) --&gt; </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 21 Sep 2020 18:19:18 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 27 Sep 2020 15:46:59 +0200</lastBuildDate>
     
 	<atom:link href="https://mallozup.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Self-healing systems: Instrumenting applications with Prometheus alerts</title>
+      <link>https://mallozup.github.io/posts/selfhealing-systems-part2/</link>
+      <pubDate>Sun, 27 Sep 2020 15:46:59 +0200</pubDate>
+      
+      <guid>https://mallozup.github.io/posts/selfhealing-systems-part2/</guid>
+      <description>Selfhealing systems part 2: In the previous blog post I covered how to use Prometheus as basis for building selfhealing systems. (https://mallozup.github.io/posts/self-healing-systems-with-prometheus/)
+Today I will explain how you can instrument your application, creating alert, which are fired inside production code and then handle them automatically, without human intervention.
+Instrumenting your application with Prometheus alerts A selfhealing system need to have, among others components, 2 components:
+ 1) a &amp;ldquo;reactor&amp;rdquo; or alert-handeler component which handle automatically alerts and react with your domain logic on this alerts.</description>
+    </item>
     
     <item>
       <title>Intelligent systems with prometheus</title>
