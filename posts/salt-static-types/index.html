@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Dario Maiocchi">
+    <meta name="description" content="Dario Maiocchi&#39;s personal website">
+    <meta name="keywords" content="foss, lisp, linux, clojure and other stuff around software">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Saltstack standalone formula: resilency and zero error"/>
+<meta name="twitter:description" content="Saltstack Static types for standalone formula. Rationale: Recently I wanted to run a formula saltstack as standalone. (without any master/minion) and locally.
+Running a formula is quite complex if you don&rsquo;t know how to run it.
+I do think that if you consider zypper, salt-call is the next layer up to zypper, in term of abstraction and context.
+That is why i was motivated to create an simple CLI for my specific context;"/>
+
+    <meta property="og:title" content="Saltstack standalone formula: resilency and zero error" />
+<meta property="og:description" content="Saltstack Static types for standalone formula. Rationale: Recently I wanted to run a formula saltstack as standalone. (without any master/minion) and locally.
+Running a formula is quite complex if you don&rsquo;t know how to run it.
+I do think that if you consider zypper, salt-call is the next layer up to zypper, in term of abstraction and context.
+That is why i was motivated to create an simple CLI for my specific context;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://mallozup.github.io/posts/salt-static-types/" />
+<meta property="article:published_time" content="2020-10-02T20:08:03+02:00" />
+<meta property="article:modified_time" content="2020-10-02T20:08:03+02:00" />
+
+
+    
+      <base href="https://mallozup.github.io/posts/salt-static-types/">
+    
+    <title>
+  Saltstack standalone formula: resilency and zero error · (def Think humble, think free) --&gt; 
+</title>
+
+    
+      <link rel="canonical" href="https://mallozup.github.io/posts/salt-static-types/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://mallozup.github.io/css/coder.min.28d751104f30c16da1aa1bb04015cbe662cacfe0d1b01af4f2240ad58580069c.css" integrity="sha256-KNdREE8wwW2hqhuwQBXL5mLKz&#43;DRsBr08iQK1YWABpw=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+      <link rel="stylesheet" href="https://mallozup.github.io/css/custom.css" />
+    
+
+    
+    
+    <link rel="icon" type="image/png" href="https://mallozup.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://mallozup.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.56.3" />
+  </head>
+
+  <body class=" ">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://mallozup.github.io/">
+      (def Think humble, think free) --&gt; 
+    </a>
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://mallozup.github.io/posts/">Blog</a>
+          </li>
+        
+      
+      
+    </ul>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Saltstack standalone formula: resilency and zero error</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2020-10-02T20:08:03&#43;02:00'>
+                October 2, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              4 minutes read
+            </span>
+          </div>
+          
+          
+        </div>
+      </header>
+
+      <div>
+        
+
+<h1 id="saltstack-static-types-for-standalone-formula">Saltstack Static types for standalone formula.</h1>
+
+<h2 id="rationale">Rationale:</h2>
+
+<p>Recently I wanted to run a formula saltstack as standalone. (without any master/minion) and locally.</p>
+
+<p>Running a formula is quite complex if you don&rsquo;t know how to run it.</p>
+
+<p>I do think that if you consider <code>zypper</code>, <code>salt-call</code> is the next layer up to zypper, in term of abstraction and context.</p>
+
+<p>That is why i was motivated to create an simple CLI for my specific context;</p>
+
+<p>zypper is providing and ensuring a state written via spec, salt-call does something similar but on the more higher level and with systems configuration.</p>
+
+<p>My approach isn&rsquo;t generic, since I focused on X formula, but  It should be just using <code>salt-call</code> and be local.</p>
+
+<h2 id="formula-attributes-on-directory-layout">Formula attributes on directory layout:</h2>
+
+<p>The formula states and pillar should be placed by the <code>rpm</code> in a well known place so the CLI can retrieve. SO the filesystem layout is solved by the RPM package of the formula.</p>
+
+<p>( for details about this check out: <a href="https://github.com/SUSE/saphanabootstrap-formula/pull/105">https://github.com/SUSE/saphanabootstrap-formula/pull/105</a>)</p>
+
+<p>In addition, I researched how I could validate pillars with <code>golang</code> static types. And I find a nice way to do it, preserving also the cli and knowing pillar are <strong>jinja</strong>.</p>
+
+<p>This pattern works well if you have control of your formula so you add your types. For custom upstream formula you don&rsquo;t control it might doesn&rsquo;t work.</p>
+
+<h1 id="how-the-code-works">How the code works</h1>
+
+<p>The functionality of the code is following:</p>
+
+<p>0) The formula &ldquo;foo&rdquo; need to follow a packaging &ldquo;API&rdquo;. Pillar are I delegated all the placement of the states/pillar to zypper.  ( for details about this check out: <a href="https://github.com/SUSE/saphanabootstrap-formula/pull/105">https://github.com/SUSE/saphanabootstrap-formula/pull/105</a>)</p>
+
+<p>1) Create your structs golang from the pillar.yaml file
+ Saltstack pillars are yaml  so you can autogenerate your structs easy.</p>
+
+<p>2) Since Pillars can be jinja template, I struggled a bit to read this in golang.
+To my rescue I found out that I can call salt util function and convert jinja to yaml, and salt does all the job for me for retrieving grains etc.</p>
+
+<pre><code>  // https://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.slsutil.html#salt.modules.slsutil.renderer
+        cmd := exec.Command(&quot;/usr/bin/salt-call&quot;, &quot;--local&quot;, &quot;slsutil.renderer&quot;, &quot;default_renderer=jinja&quot;, formulaPillar)
+</code></pre>
+
+<p>So basically there I just say to salt-call: convert me the jinja grain, into yaml.
+Since golang can read yaml with structs and create types, I can validate my pillars dinamically! ( it might seems obvious but is not)</p>
+
+<p>3) Once I do have validate the pillars, I can run the formula with a salt-call state.apply call.</p>
+
+<pre><code>package main
+
+import (
+	&quot;os&quot;
+	&quot;os/exec&quot;
+
+	log &quot;github.com/sirupsen/logrus&quot;
+	flag &quot;github.com/spf13/pflag&quot;
+	&quot;gopkg.in/yaml.v2&quot;
+)
+
+type saphanaboostrapFormula struct {
+	Local struct {
+		Hana struct {
+			InstallPackages   bool   `yaml:&quot;install_packages&quot;`
+			SaptuneSolution   string `yaml:&quot;saptune_solution&quot;`
+			SoftwarePath      string `yaml:&quot;software_path&quot;`
+			HanaArchiveFile   string `yaml:&quot;hana_archive_file&quot;`
+			HanaExtractDir    string `yaml:&quot;hana_extract_dir&quot;`
+			SapcarExeFile     string `yaml:&quot;sapcar_exe_file&quot;`
+			HaEnabled         bool   `yaml:&quot;ha_enabled&quot;`
+			MonitoringEnabled bool   `yaml:&quot;monitoring_enabled&quot;`
+			Nodes             []struct {
+				Host     string `yaml:&quot;host&quot;`
+				Sid      string `yaml:&quot;sid&quot;`
+				Instance int    `yaml:&quot;instance&quot;`
+				Password string `yaml:&quot;password&quot;`
+				Install  struct {
+					SoftwarePath       string `yaml:&quot;software_path&quot;`
+					RootUser           string `yaml:&quot;root_user&quot;`
+					RootPassword       string `yaml:&quot;root_password&quot;`
+					HdbPwdFile         string `yaml:&quot;hdb_pwd_file&quot;`
+					SystemUserPassword string `yaml:&quot;system_user_password&quot;`
+					SapadmPassword     string `yaml:&quot;sapadm_password&quot;`
+				} `yaml:&quot;install,omitempty&quot;`
+				Primary struct {
+					Name    string `yaml:&quot;name&quot;`
+					Userkey struct {
+						KeyName      string `yaml:&quot;key_name&quot;`
+						Environment  string `yaml:&quot;environment&quot;`
+						UserName     string `yaml:&quot;user_name&quot;`
+						UserPassword string `yaml:&quot;user_password&quot;`
+						Database     string `yaml:&quot;database&quot;`
+					} `yaml:&quot;userkey&quot;`
+					Backup struct {
+						KeyName      string `yaml:&quot;key_name&quot;`
+						UserName     string `yaml:&quot;user_name&quot;`
+						UserPassword string `yaml:&quot;user_password&quot;`
+						Database     string `yaml:&quot;database&quot;`
+						File         string `yaml:&quot;file&quot;`
+					} `yaml:&quot;backup&quot;`
+				} `yaml:&quot;primary,omitempty&quot;`
+				Exporter struct {
+					ExpositionPort int    `yaml:&quot;exposition_port&quot;`
+					MultiTenant    bool   `yaml:&quot;multi_tenant&quot;`
+					User           string `yaml:&quot;user&quot;`
+					Password       string `yaml:&quot;password&quot;`
+					Timeout        int    `yaml:&quot;timeout&quot;`
+				} `yaml:&quot;exporter,omitempty&quot;`
+				SaptuneSolution string `yaml:&quot;saptune_solution,omitempty&quot;`
+				Secondary       struct {
+					Name            string `yaml:&quot;name&quot;`
+					RemoteHost      string `yaml:&quot;remote_host&quot;`
+					RemoteInstance  string `yaml:&quot;remote_instance&quot;`
+					ReplicationMode string `yaml:&quot;replication_mode&quot;`
+					OperationMode   string `yaml:&quot;operation_mode&quot;`
+					PrimaryTimeout  int    `yaml:&quot;primary_timeout&quot;`
+				} `yaml:&quot;secondary,omitempty&quot;`
+				ScenarioType            string `yaml:&quot;scenario_type,omitempty&quot;`
+				CostOptimizedParameters struct {
+					GlobalAllocationLimit string `yaml:&quot;global_allocation_limit&quot;`
+					PreloadColumnTables   bool   `yaml:&quot;preload_column_tables&quot;`
+				} `yaml:&quot;cost_optimized_parameters,omitempty&quot;`
+			} `yaml:&quot;nodes&quot;`
+		} `yaml:&quot;hana&quot;`
+	}
+}
+
+const (
+	//	# these variables are formula specific:
+	formulaLog  = &quot;/var/log/salt-hana-formula.log&quot;
+	formulaName = &quot;hana&quot;
+	// this is where the pillar are located
+	formulaConfig = &quot;/usr/share/salt-formulas/config/hana&quot;
+	formulaPillar = &quot;/usr/share/salt-formulas/config/hana/pillar/hana/hana.sls&quot;
+)
+
+var (
+	// global --help flag
+	helpFlag *bool
+)
+
+func validatePillar() {
+	var c saphanaboostrapFormula
+	// convert jinja to yaml
+	// https://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.slsutil.html#salt.modules.slsutil.renderer
+	cmd := exec.Command(&quot;/usr/bin/salt-call&quot;, &quot;--local&quot;, &quot;slsutil.renderer&quot;, &quot;default_renderer=jinja&quot;, formulaPillar)
+	stdout, err := cmd.Output()
+	if err != nil {
+		log.Error(err)
+	}
+
+	log.Info(&quot;[PREFLIGHT]: pillar rendered... converting to yaml&quot;)
+	err = yaml.Unmarshal(stdout, &amp;c)
+	if err != nil {
+		log.Fatalf(&quot;Formula Pillar data is not valid!: %v&quot;, err)
+	}
+	log.Printf(&quot;--- t:\n%v\n\n&quot;, c)
+	log.Info(&quot;[PREFLIGHT]: pillar valid!&quot;)
+}
+
+func main() {
+
+	log.Infof(&quot;[PREFLIGHT]: validating pillar of salt formula %s&quot;, formulaName)
+
+	// copy grains to config of formula
+	_, err := exec.Command(&quot;/usr/bin/cp&quot;, &quot;/etc/salt/grains&quot;, formulaConfig).Output()
+	if err != nil {
+		log.Errorf(&quot;error while rendindering pillar jinja file %s&quot;, err)
+	}
+
+	// render and validate via static types pillars
+	validatePillar()
+
+	// run formula
+	log.Infof(&quot;[FORMULA]: formula %s will be executed. Please wait..&quot;, formulaName)
+	formulaOut, err := exec.Command(&quot;/usr/bin/salt-call&quot;, &quot;--local&quot;, &quot;--log-level=info&quot;,
+		&quot;--retcode-passthrough&quot;, &quot;--force-color&quot;, &quot;--config=&quot;+formulaConfig, &quot;state.apply&quot;, formulaName).CombinedOutput()
+
+	if err != nil {
+		log.Errorf(&quot;error while executing salt formula %s, %s&quot;, err, formulaOut)
+	}
+
+}
+</code></pre>
+
+      </div>
+
+      <footer>
+        
+
+
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+      <p>free software, free thoughts</p>
+    
+     © 2020
+    
+       · 
+    
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+
+  </body>
+
+</html>

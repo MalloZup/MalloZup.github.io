@@ -6,10 +6,22 @@
     <description>Recent content on (def Think humble, think free) --&gt; </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 27 Sep 2020 15:46:59 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2020 20:08:03 +0200</lastBuildDate>
     
 	<atom:link href="https://mallozup.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Saltstack standalone formula: resilency and zero error</title>
+      <link>https://mallozup.github.io/posts/salt-static-types/</link>
+      <pubDate>Fri, 02 Oct 2020 20:08:03 +0200</pubDate>
+      
+      <guid>https://mallozup.github.io/posts/salt-static-types/</guid>
+      <description>Saltstack Static types for standalone formula. Rationale: Recently I wanted to run a formula saltstack as standalone. (without any master/minion) and locally.
+Running a formula is quite complex if you don&amp;rsquo;t know how to run it.
+I do think that if you consider zypper, salt-call is the next layer up to zypper, in term of abstraction and context.
+That is why i was motivated to create an simple CLI for my specific context;</description>
+    </item>
     
     <item>
       <title>Self-healing systems: Instrumenting applications with Prometheus alerts</title>
