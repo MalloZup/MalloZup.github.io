@@ -101,7 +101,7 @@ I do think 80% of software projects do have a super bad design, because no one h
             </span>
             <span class="reading-time">
               <i class="fas fa-clock"></i>
-              5 minutes read
+              6 minutes read
             </span>
           </div>
           
@@ -154,13 +154,13 @@ No matter how you are passionated, accountable and think to be skilled developer
 
 <p>In the real world , in lot of legacy code or opensource code, developers are incrementally creating an API satifsying their needs, or the  User needs, compromising the whole design.
 Time and effort is always the problem.
- -  people want to fix X feature in the shortest</p>
+People want to fix X feature in the shortest timeframe possible, with possibly less effort.</p>
 
 <p>A practical example:</p>
 
 <p>One of the project I&rsquo;m involved in the opensource world, is the upstream project <code>terraform-libvirt</code>. ( <a href="https://github.com/dmacvicar/terraform-provider-libvirt">https://github.com/dmacvicar/terraform-provider-libvirt</a>)</p>
 
-<p>The API of libvirt is an XML, terraform the provider needs to map it to  HCL and terraform constructs.</p>
+<p>Simplifying, the API conf of libvirt is an XML file where you define resource, terraform the provider needs to map this  to HCL and terraform constructs.  (that is also the most problematic thing)</p>
 
 <p>In the past we had, and also in the present lot of users which send us pull-request for introducing a new feature which will change the API.
 If we would merge this PRs the codebase will become un-maintainable. This is not about making people happy.</p>
@@ -191,7 +191,7 @@ Maybe some design choices was poor, and the API is simple exposing to much, whic
 
 <p>This is also why API are bad in general.</p>
 
-<p>But I think we can change this.</p>
+<p>But I think we can change this</p>
 
 <h1 id="shifting-the-mental-model">shifting the mental model:</h1>
 
