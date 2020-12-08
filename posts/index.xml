@@ -70,6 +70,18 @@ A resource can be for example Apache. A resource doesn&amp;rsquo;t need to be in
     </item>
     
     <item>
+      <title>How to draw systems arch</title>
+      <link>https://mallozup.github.io/posts/exploring-semantics-of-drawing-systems-00/</link>
+      <pubDate>Tue, 03 Sep 2019 00:09:07 +0200</pubDate>
+      
+      <guid>https://mallozup.github.io/posts/exploring-semantics-of-drawing-systems-00/</guid>
+      <description> Version: 0.0.1 experimental Rationale: I just wanted to gather some techniques and material for drawing and describing a program system.
+Data flow:  Data flow: https://en.wikipedia.org/wiki/Data-flow_diagram  https://www.cs.uct.ac.za/mit_notes/software/pdfs/Chp06.pdf
+## TODO: do an example
+State charts: </description>
+    </item>
+    
+    <item>
       <title>Systems Design: 01 nREPL clojure</title>
       <link>https://mallozup.github.io/posts/systems-draw-01-nrepl/</link>
       <pubDate>Sun, 25 Aug 2019 14:13:26 +0200</pubDate>
