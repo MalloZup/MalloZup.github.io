@@ -99,7 +99,7 @@
             </span>
             <span class="reading-time">
               <i class="fas fa-clock"></i>
-              3 minutes read
+              2 minutes read
             </span>
           </div>
           
@@ -122,6 +122,8 @@
 <p>I wasnt to summarize things I have learned:</p>
 
 <ul>
+<li><p>0) if you want to try out thanos check: <a href="https://katacoda.com/thanos/courses/thanos/1-globalview">https://katacoda.com/thanos/courses/thanos/1-globalview</a></p></li>
+
 <li><p>1) Prometheus <code>mixins</code> and jsonnet concepts</p></li>
 
 <li><p>2) Grpc protocol and middlewares</p></li>
@@ -135,6 +137,10 @@
 <li><p>6) Misc</p></li>
 </ul>
 
+<h2 id="0">0)</h2>
+
+<p>Thanos design doc: <a href="https://thanos.io/tip/thanos/design.md/">https://thanos.io/tip/thanos/design.md/</a></p>
+
 <h2 id="1-prometheus-mixing">1) Prometheus mixing</h2>
 
 <p>From upstream, A mixin is a set of Grafana dashboards and Prometheus rules and alerts, packaged together in a reuseable and extensible bundle.</p>
@@ -142,14 +148,6 @@
 <p>See for more details: <a href="https://monitoring.mixins.dev">https://monitoring.mixins.dev</a></p>
 
 <p>Thanos mixins are located here:  <a href="https://github.com/thanos-io/thanos/tree/master/mixin">https://github.com/thanos-io/thanos/tree/master/mixin</a></p>
-
-<p>The following part is based on my experience:</p>
-
-<p>Personally I was aware of the paper of mixing but I didn&rsquo;t have seen an adoption till 2020 of the concept which was made written in 2018.
-I personally see the problem which is trying to adress but from my perspective, mixins could also add complexity to a simple configuration or files , which mostly what dashboards rules are.
-Anyways, in Thanos mixins are well maintained and the UX is easy enough to add rules via libsonet, allthough setting up mixins to single projects ( outside thanos etc) is more complexity then just using and saving the &ldquo;plain&rdquo; config file.</p>
-
-<p>I do see mixins as really nice attempt to solve some problem which is known, but maybe there are other things which people can use . ( Configuration management software, RPM or other packaging etc)</p>
 
 <h2 id="2-grpc-protocol-and-middlewares">2) Grpc protocol and middlewares</h2>
 
@@ -159,32 +157,31 @@ Anyways, in Thanos mixins are well maintained and the UX is easy enough to add r
 
 <h1 id="3-rate-limit-implementations-and-algorithms">3) Rate-Limit implementations and algorithms.</h1>
 
-<p>I took initiative on solving an issue on thanos with rate-limiting (is still pending).</p>
+<p>I took initiative on solving an issue on thanos with rate-limiting (is still pending), since Grpc has no method natively to do rate limiting.
+During the journey, I researched various rate-limiting algorithms and mechanism. Some link about rate-limiting in golang:</p>
 
-<p>Grpc has natively no mechanims to limit rates.</p>
+<ul>
+<li>HTTP rate limiting <a href="https://dev.to/plutov/rate-limiting-http-requests-in-go-based-on-ip-address-542g">https://dev.to/plutov/rate-limiting-http-requests-in-go-based-on-ip-address-542g</a></li>
+<li>GRPC rate limiting  <a href="https://jbrandhorst.com/post/go-semaphore/">https://jbrandhorst.com/post/go-semaphore/</a></li>
+</ul>
 
-<p>During the journey, I researched various rate-limiting algorithms and mechanism.</p>
+<h1 id="4-prometheus-internals">4) Prometheus internals:</h1>
 
-<p>Some useful readings I found in the web regarding this topic:</p>
+<p>When reading some thanos code, you will endup learning prometheus internals since thanos import directy prometheus internals/code (via golang)</p>
 
-<p>( <a href="https://jbrandhorst.com/post/go-semaphore/">https://jbrandhorst.com/post/go-semaphore/</a>) this is mostly implemented also by the prometheus <code>gate</code> construct used by thanos for limiting the queries
-<a href="https://github.com/thanos-io/thanos/blob/1fff9a7157d1f3b7d5e0ce36f999b10bb3ae7ec4/pkg/gate/gate.go#L31">https://github.com/thanos-io/thanos/blob/1fff9a7157d1f3b7d5e0ce36f999b10bb3ae7ec4/pkg/gate/gate.go#L31</a></p>
+<p><a href="https://thanos.io/tip/thanos/design.md/">https://thanos.io/tip/thanos/design.md/</a></p>
 
-<h1 id="4-prometheus-internals-and-above">4) Prometheus Internals and above:</h1>
+<p>Also is</p>
 
-<p>Thanos is embeded really closely to prometheus and people who maintains thanos use to contribute/maintain prometheus. ( golang allow to import library directly)
-So at the end when you end up learning thanos you learn always a bit more of prometheus internals.
-Also some curious side, you might endup to learn a bit cortex, since thanos and cortex share some part of code like query-frontend.</p>
+<p>Another blog I want to read also : <a href="https://ganeshvernekar.com/blog/prometheus-tsdb-the-head-block">https://ganeshvernekar.com/blog/prometheus-tsdb-the-head-block</a></p>
 
-<h1 id="5-cncf-groups">5) CNCF groups:</h1>
+<h1 id="5-cncf-groups-thanos-prometheus-observability">5) CNCF groups, thanos, prometheus  observability:</h1>
 
-<p>I discovered also there is a calender and meeting group avail here:</p>
+<p>Thing I will want to follow-up next 2021 are definitely the opensource meetings . See <a href="https://www.cncf.io/calendar/">https://www.cncf.io/calendar/</a></p>
 
-<p><a href="https://www.cncf.io/calendar/">https://www.cncf.io/calendar/</a></p>
+<p><a href="https://github.com/cncf/sig-observability">https://github.com/cncf/sig-observability</a></p>
 
-<p>Groups which I will follow-up as individual opensource contributor next year  will be mostly #thanos and #observability group.</p>
-
-<h1 id="6-misc">6) Misc:</h1>
+<h2 id="6-misc">6) Misc:</h2>
 
 <p>Other things I appreciated in thanos:</p>
 
@@ -192,8 +189,6 @@ Also some curious side, you might endup to learn a bit cortex, since thanos and 
 <li><p><a href="https://katacoda.com/thanos/courses/thanos/1-globalview">https://katacoda.com/thanos/courses/thanos/1-globalview</a> is a &ldquo;live&rdquo; experience for using thanos and learning it. Really useful</p></li>
 
 <li><p>RFC or kind of architectural Decision log embedded in github repo: <a href="https://github.com/thanos-io/thanos/tree/master/docs/proposals">https://github.com/thanos-io/thanos/tree/master/docs/proposals</a></p></li>
-
-<li><p>CLI: thanos is using <a href="https://github.com/alecthomas/kingpin">https://github.com/alecthomas/kingpin</a> for building a CLI in go  (unlike other CNCF clis which user viper etc library)</p></li>
 </ul>
 
       </div>
