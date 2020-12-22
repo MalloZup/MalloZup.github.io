@@ -18,13 +18,12 @@
       
       <guid>https://mallozup.github.io/posts/things-learned-with-thanos/</guid>
       <description>Things learned with Thanos opensource proejct Recently I started working and learning thanos concepts just for fun and as opensource individual (during my free time).
-I wasnt to summarize things I have learned:
+This blogpost just summarize shortly some things I have learned, during some few days.
  0) if you want to try out thanos check: https://katacoda.com/thanos/courses/thanos/1-globalview
  1) Prometheus mixins and jsonnet concepts
  2) Grpc protocol and middlewares
  3) Rate limiting algorithm
- 4) Prometheus internals
- 5) CNCF Observability and other groups</description>
+ 4) Prometheus internals</description>
     </item>
     
     <item>
