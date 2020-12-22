@@ -28,16 +28,6 @@ I wasnt to summarize things I have learned:
     </item>
     
     <item>
-      <title>Versioning API and beyond thoughts. V0.1</title>
-      <link>https://mallozup.github.io/posts/api-thoughts/</link>
-      <pubDate>Sun, 04 Oct 2020 11:22:10 +0200</pubDate>
-      
-      <guid>https://mallozup.github.io/posts/api-thoughts/</guid>
-      <description>Introduction: What i&amp;rsquo;m writing here comes from pragmatic experience, readings and inspiration from projects, languages (functionals), video etc. I do have failed many times and I will do in the future. I&amp;rsquo;m not proposing any magic formula allthought there might be some thoughts will inspire you.
-I do think 80% of software projects do have a super bad design, because no one have ever thought about the API. From begin, or late.</description>
-    </item>
-    
-    <item>
       <title>Saltstack standalone formula: resilency and zero error</title>
       <link>https://mallozup.github.io/posts/salt-static-types/</link>
       <pubDate>Fri, 02 Oct 2020 20:08:03 +0200</pubDate>
