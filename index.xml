@@ -6,10 +6,27 @@
     <description>Recent content on (def Think humble, think free) --&gt; </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 04 Oct 2020 11:22:10 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 22 Dec 2020 12:26:17 +0100</lastBuildDate>
     
 	<atom:link href="https://mallozup.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Things and projects learned within Thanos opensource project</title>
+      <link>https://mallozup.github.io/posts/things-learned-with-thanos/</link>
+      <pubDate>Tue, 22 Dec 2020 12:26:17 +0100</pubDate>
+      
+      <guid>https://mallozup.github.io/posts/things-learned-with-thanos/</guid>
+      <description>Things learned with Thanos opensource proejct Recently I started working and learning thanos concepts just for fun and as opensource individual (during my free time).
+I wasnt to summarize things I have learned:
+ 1) Prometheus mixins and jsonnet concepts
+ 2) Grpc protocol and middlewares
+ 3) Rate limiting algorithm
+ 4) Prometheus internals
+ 5) CNCF Observability and other groups
+ 6) Misc
+  1) Prometheus mixing From upstream, A mixin is a set of Grafana dashboards and Prometheus rules and alerts, packaged together in a reuseable and extensible bundle.</description>
+    </item>
     
     <item>
       <title>Versioning API and beyond thoughts. V0.1</title>
@@ -58,19 +75,6 @@ What do you need for getting the pattern I do simplify lot of things assuming yo
     </item>
     
     <item>
-      <title>Creating an exporter and its limits, a retrospective</title>
-      <link>https://mallozup.github.io/exporter-and-limits/</link>
-      <pubDate>Thu, 31 Oct 2019 11:47:54 +0100</pubDate>
-      
-      <guid>https://mallozup.github.io/exporter-and-limits/</guid>
-      <description>Rationale: This article will talk about the design, development https://github.com/ClusterLabs/ha_cluster_exporter from a technical perspective.
-It will be an occasion to a retrospective on this project.
-History: The ha_cluster_exporter 0.0.1 was first released on september 2019 https://github.com/ClusterLabs/ha_cluster_exporter/tree/0.0.1 .
-Lot of things changed right now to the actual version 0.1.0:
- the architecture of the project was refactored favorizing prometheus collector API lot of new metrics (pacemaker, drbd, corosync) in a main pkg.</description>
-    </item>
-    
-    <item>
       <title>Monitoring an HA Cluster</title>
       <link>https://mallozup.github.io/posts/monitoring-ha-cluster/</link>
       <pubDate>Fri, 13 Sep 2019 16:59:40 +0200</pubDate>
@@ -80,18 +84,6 @@ Lot of things changed right now to the actual version 0.1.0:
 HA Cluster intro https://clusterlabs.org/
 Clusterlabs is in production since 1999 and it still works. The difference between other nowdays cluster is that is a resource cluster.
 A resource can be for example Apache. A resource doesn&amp;rsquo;t need to be in a container, it can but can be in a bare metal host etc.</description>
-    </item>
-    
-    <item>
-      <title>How to draw systems arch</title>
-      <link>https://mallozup.github.io/posts/exploring-semantics-of-drawing-systems-00/</link>
-      <pubDate>Tue, 03 Sep 2019 00:09:07 +0200</pubDate>
-      
-      <guid>https://mallozup.github.io/posts/exploring-semantics-of-drawing-systems-00/</guid>
-      <description> Version: 0.0.1 experimental Rationale: I just wanted to gather some techniques and material for drawing and describing a program system.
-Data flow:  Data flow: https://en.wikipedia.org/wiki/Data-flow_diagram  https://www.cs.uct.ac.za/mit_notes/software/pdfs/Chp06.pdf
-## TODO: do an example
-State charts: </description>
     </item>
     
     <item>

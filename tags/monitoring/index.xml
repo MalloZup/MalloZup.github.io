@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>monitoring on (def Think humble, think free) --&gt; </title>
+    <link>https://mallozup.github.io/tags/monitoring/</link>
+    <description>Recent content in monitoring on (def Think humble, think free) --&gt; </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 22 Dec 2020 12:26:17 +0100</lastBuildDate>
+    
+	<atom:link href="https://mallozup.github.io/tags/monitoring/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Things and projects learned within Thanos opensource project</title>
+      <link>https://mallozup.github.io/posts/things-learned-with-thanos/</link>
+      <pubDate>Tue, 22 Dec 2020 12:26:17 +0100</pubDate>
+      
+      <guid>https://mallozup.github.io/posts/things-learned-with-thanos/</guid>
+      <description>Things learned with Thanos opensource proejct Recently I started working and learning thanos concepts just for fun and as opensource individual (during my free time).
+I wasnt to summarize things I have learned:
+ 1) Prometheus mixins and jsonnet concepts
+ 2) Grpc protocol and middlewares
+ 3) Rate limiting algorithm
+ 4) Prometheus internals
+ 5) CNCF Observability and other groups
+ 6) Misc
+  1) Prometheus mixing From upstream, A mixin is a set of Grafana dashboards and Prometheus rules and alerts, packaged together in a reuseable and extensible bundle.</description>
+    </item>
+    
+  </channel>
+</rss>

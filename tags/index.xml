@@ -6,10 +6,28 @@
     <description>Recent content in Tags on (def Think humble, think free) --&gt; </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 21 Sep 2020 18:19:18 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 22 Dec 2020 12:26:17 +0100</lastBuildDate>
     
 	<atom:link href="https://mallozup.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>monitoring</title>
+      <link>https://mallozup.github.io/tags/monitoring/</link>
+      <pubDate>Tue, 22 Dec 2020 12:26:17 +0100</pubDate>
+      
+      <guid>https://mallozup.github.io/tags/monitoring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>observability</title>
+      <link>https://mallozup.github.io/tags/observability/</link>
+      <pubDate>Tue, 22 Dec 2020 12:26:17 +0100</pubDate>
+      
+      <guid>https://mallozup.github.io/tags/observability/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>code</title>
