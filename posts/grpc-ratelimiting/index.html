@@ -145,7 +145,7 @@ This lines represent my own thoughts, and efforts and research for improving mys
 <p>If you don&rsquo;t have <strong>a mechanism for limiting the number of requests</strong>,  your servers resources, your servers or/and application will crash, or having a bad behaviour  which will be probably will led to a massive <em>service outage</em>.
  (depending on your SREs or company size :P )</p>
 
-<p>For solving this problem, we need to focus into  the API/server backend application, usually we adopt rate-limiting techniques.. Of course one could cluster an application, but clustering or make HA a broken APP/service, doesn&rsquo;t seem a good idea. :P So yes, is not the Cluster Orchestrator the solution of all our problems &hellip; <code>throlling</code></p>
+<p>For solving this problem, we need to focus into  the API/server backend application, usually we adopt rate-limiting techniques.. Of course one could cluster an application, but clustering or make HA a broken APP/service, doesn&rsquo;t seem a good idea. :P</p>
 
 <p>I will show a <code>pragmatic</code> implementation  of rate-limiting and algorithms, in <code>golang</code> and <code>gRPC</code> server ecosystem.</p>
 
@@ -166,7 +166,7 @@ This lines represent my own thoughts, and efforts and research for improving mys
 <p>The video showcase a grpc server/client on terminal with rate-limiting.
 As you will see, I used the <code>interceptor</code> and TockenBucket approach for implementing the rate-limiting in a gRPC server. Obviously the problem can be solved in other ways.</p>
 
-<p>For example using other algorithms, like: <a href="https://en.wikipedia.org/wiki/Leaky_bucket">https://en.wikipedia.org/wiki/Leaky_bucket</a></p>
+<p>For example using other algorithms..</p>
 
 <h1 id="3-some-code-details">3) Some Code details</h1>
 
