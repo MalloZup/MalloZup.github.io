@@ -11,12 +11,14 @@
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="an humble gRPC rate-limiting tutorial"/>
-<meta name="twitter:description" content="Disclaimer: During this time I researched in my free-time, as individual opensource contributor and citzen how to deal and implement rate-limiting in golang, for a gRPC server. This lines represent my own thoughts, and efforts and research for improving myself and researchs as individual.
-P.S: I thanks the #thanos opensource community for support in this research, which I initially picked up and started from my own initiative for researching on an upstream issue, and which I&rsquo;m not yet finished to do :) https://github."/>
+<meta name="twitter:description" content="Summary:  1) Rationale 2) Live Demo 3) Some Code details 4) Disclaimer  1) Rationale: Today I want to show you a possible solution, to a well-known problem when dealing with backend APIs or/and WEB applications.
+The problem: imagine today is a special day, like 1 week before Christmas. Your servers will probably reach an abnormal higher number of client request.
+If you don&rsquo;t have a mechanism for limiting the number of requests, your servers resources, your servers or/and application will crash, or having a bad behaviour which will be probably will led to a massive service outage."/>
 
     <meta property="og:title" content="an humble gRPC rate-limiting tutorial" />
-<meta property="og:description" content="Disclaimer: During this time I researched in my free-time, as individual opensource contributor and citzen how to deal and implement rate-limiting in golang, for a gRPC server. This lines represent my own thoughts, and efforts and research for improving myself and researchs as individual.
-P.S: I thanks the #thanos opensource community for support in this research, which I initially picked up and started from my own initiative for researching on an upstream issue, and which I&rsquo;m not yet finished to do :) https://github." />
+<meta property="og:description" content="Summary:  1) Rationale 2) Live Demo 3) Some Code details 4) Disclaimer  1) Rationale: Today I want to show you a possible solution, to a well-known problem when dealing with backend APIs or/and WEB applications.
+The problem: imagine today is a special day, like 1 week before Christmas. Your servers will probably reach an abnormal higher number of client request.
+If you don&rsquo;t have a mechanism for limiting the number of requests, your servers resources, your servers or/and application will crash, or having a bad behaviour which will be probably will led to a massive service outage." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://mallozup.github.io/posts/grpc-ratelimiting/" />
 <meta property="article:published_time" content="2020-12-30T14:36:38+01:00" />
@@ -119,21 +121,13 @@ P.S: I thanks the #thanos opensource community for support in this research, whi
       <div>
         
 
-<h1 id="disclaimer">Disclaimer:</h1>
-
-<p>During this time I researched in my free-time, as <strong>individual opensource contributor and citzen</strong> how to deal and implement rate-limiting in golang, for a gRPC server.
-This lines represent my own thoughts, and efforts and research for improving myself and researchs as individual.</p>
-
-<p>P.S: I thanks the #thanos opensource community for support in this research, which I initially picked up and started from my own initiative for researching on an upstream issue,  and which I&rsquo;m not yet finished to do :) <a href="https://github.com/thanos-io/thanos">https://github.com/thanos-io/thanos</a></p>
-
-<p>If you find something wrong or invalid, feel free to ping me on twitter or slack.</p>
-
 <h1 id="summary">Summary:</h1>
 
 <ul>
 <li>1) Rationale</li>
 <li>2) Live Demo</li>
 <li>3) Some Code details</li>
+<li>4) Disclaimer</li>
 </ul>
 
 <h1 id="1-rationale">1) Rationale:</h1>
@@ -228,6 +222,15 @@ func (r *rateLimiterInterceptor) Limit() bool {
 
 <li><p>For the RateLimit Tocken bucket I used <a href="https://github.com/juju/ratelimit">https://github.com/juju/ratelimit</a> library</p></li>
 </ul>
+
+<h1 id="disclaimer">Disclaimer:</h1>
+
+<p>During this time I researched in my free-time, as <strong>individual opensource contributor and citzen</strong> how to deal and implement rate-limiting in golang, for a gRPC server.
+This lines represent my own thoughts, and efforts and research for improving myself and researchs as individual.</p>
+
+<p>P.S: I thanks the #thanos opensource community for support in this research, which I initially picked up and started from my own initiative for researching on an upstream issue,  and which I&rsquo;m not yet finished to do :) <a href="https://github.com/thanos-io/thanos">https://github.com/thanos-io/thanos</a></p>
+
+<p>If you find something wrong or invalid, feel free to ping me on twitter or slack.</p>
 
       </div>
 

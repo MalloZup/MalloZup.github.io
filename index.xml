@@ -17,8 +17,9 @@
       <pubDate>Wed, 30 Dec 2020 14:36:38 +0100</pubDate>
       
       <guid>https://mallozup.github.io/posts/grpc-ratelimiting/</guid>
-      <description>Disclaimer: During this time I researched in my free-time, as individual opensource contributor and citzen how to deal and implement rate-limiting in golang, for a gRPC server. This lines represent my own thoughts, and efforts and research for improving myself and researchs as individual.
-P.S: I thanks the #thanos opensource community for support in this research, which I initially picked up and started from my own initiative for researching on an upstream issue, and which I&amp;rsquo;m not yet finished to do :) https://github.</description>
+      <description>Summary:  1) Rationale 2) Live Demo 3) Some Code details 4) Disclaimer  1) Rationale: Today I want to show you a possible solution, to a well-known problem when dealing with backend APIs or/and WEB applications.
+The problem: imagine today is a special day, like 1 week before Christmas. Your servers will probably reach an abnormal higher number of client request.
+If you don&amp;rsquo;t have a mechanism for limiting the number of requests, your servers resources, your servers or/and application will crash, or having a bad behaviour which will be probably will led to a massive service outage.</description>
     </item>
     
     <item>
