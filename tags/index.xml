@@ -6,10 +6,37 @@
     <description>Recent content in Tags on (def Think humble, think free) --&gt; </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Dec 2020 12:26:17 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 30 Dec 2020 14:36:38 +0100</lastBuildDate>
     
 	<atom:link href="https://mallozup.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>backend</title>
+      <link>https://mallozup.github.io/tags/backend/</link>
+      <pubDate>Wed, 30 Dec 2020 14:36:38 +0100</pubDate>
+      
+      <guid>https://mallozup.github.io/tags/backend/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>https://mallozup.github.io/tags/golang/</link>
+      <pubDate>Wed, 30 Dec 2020 14:36:38 +0100</pubDate>
+      
+      <guid>https://mallozup.github.io/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>grpc</title>
+      <link>https://mallozup.github.io/tags/grpc/</link>
+      <pubDate>Wed, 30 Dec 2020 14:36:38 +0100</pubDate>
+      
+      <guid>https://mallozup.github.io/tags/grpc/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>monitoring</title>
