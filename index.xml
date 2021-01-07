@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>(def Think humble, think free) --&gt; </title>
+    <title>Dario Maiocchi</title>
     <link>https://mallozup.github.io/</link>
-    <description>Recent content on (def Think humble, think free) --&gt; </description>
+    <description>Recent content on Dario Maiocchi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 07 Jan 2021 14:44:22 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 07 Jan 2021 17:17:49 +0100</lastBuildDate>
     
 	<atom:link href="https://mallozup.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Achievements</title>
+      <link>https://mallozup.github.io/ac/achievements/</link>
+      <pubDate>Thu, 07 Jan 2021 17:17:49 +0100</pubDate>
+      
+      <guid>https://mallozup.github.io/ac/achievements/</guid>
+      <description> Certificates and courses I do for improve myself: 2021: Self-improvement  Accomplished Learning how to learn curse. https://coursera.org/share/3f5c892f70c99b3783915fda313bc715  Software Talks/conferences: Premise in Mind: since I do have a dog, I can&amp;rsquo;t travel around the world for conferences. :)
+ Virtual, 2020, SUSECON: https://www.youtube.com/watch?v=COtHGImapac  </description>
+    </item>
     
     <item>
       <title>Learning how to learn, a life long challange</title>
@@ -17,7 +27,7 @@
       <pubDate>Thu, 07 Jan 2021 14:44:22 +0100</pubDate>
       
       <guid>https://mallozup.github.io/posts/learning-how-to-learn/</guid>
-      <description>Learning how to Learn Facts: Sport/exercise neuroscience confirm that exercise make you smart. Start do sport. (See the focused vs diffuse mode of brain for the rationale, next section.)
+      <description>Learning how to Learn Facts: Sport/exercise. Neuroscience confirm that exercise make you smart. Start do sport. (See the focused vs diffuse mode of brain for the rationale, next section.)
 Be active learner instead of passive learner. Engage with material, people, Recall, test your learning, create something with the abstract theories you are learning. This will create neurostructure with the material and the concepts you are learning, instead of memorizing them, or just view them as passive observator.</description>
     </item>
     

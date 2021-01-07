@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Acs on Dario Maiocchi</title>
+    <link>https://mallozup.github.io/ac/</link>
+    <description>Recent content in Acs on Dario Maiocchi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 07 Jan 2021 17:17:49 +0100</lastBuildDate>
+    
+	<atom:link href="https://mallozup.github.io/ac/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Achievements</title>
+      <link>https://mallozup.github.io/ac/achievements/</link>
+      <pubDate>Thu, 07 Jan 2021 17:17:49 +0100</pubDate>
+      
+      <guid>https://mallozup.github.io/ac/achievements/</guid>
+      <description> Certificates and courses I do for improve myself: 2021: Self-improvement  Accomplished Learning how to learn curse. https://coursera.org/share/3f5c892f70c99b3783915fda313bc715  Software Talks/conferences: Premise in Mind: since I do have a dog, I can&amp;rsquo;t travel around the world for conferences. :)
+ Virtual, 2020, SUSECON: https://www.youtube.com/watch?v=COtHGImapac  </description>
+    </item>
+    
+  </channel>
+</rss>
