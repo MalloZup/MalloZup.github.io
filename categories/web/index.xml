@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>web on Dario Maiocchi</title>
+    <link>https://mallozup.github.io/categories/web/</link>
+    <description>Recent content in web on Dario Maiocchi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 29 Mar 2021 10:49:37 +0200</lastBuildDate>
+    
+	<atom:link href="https://mallozup.github.io/categories/web/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Some fondamentals for web application and microservices in golang</title>
+      <link>https://mallozup.github.io/posts/fondamentals-webapp-golang/</link>
+      <pubDate>Mon, 29 Mar 2021 10:49:37 +0200</pubDate>
+      
+      <guid>https://mallozup.github.io/posts/fondamentals-webapp-golang/</guid>
+      <description>Intro: I will write in this post about some useful concept you need for building web application in golang. Also I will compare such approaches to other languages and upstream approaches from my developer carreer into opensource world.
+#1) Web toolkit are the golang minimalist answer against complexity of frameworks
+In our modern days, some people think that choosing a framework is a safe choice. But this can be a quite considerable risk, since you embark in a mental pattern, bugs and coding style that you might don&amp;rsquo;t know if it fits for you.</description>
+    </item>
+    
+  </channel>
+</rss>

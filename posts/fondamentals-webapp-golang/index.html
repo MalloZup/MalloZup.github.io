@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Dario Maiocchi">
+    <meta name="description" content="Dario Maiocchi&#39;s personal website">
+    <meta name="keywords" content="foss, lisp, linux, clojure and other stuff around software">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Some fondamentals for web application and microservices in golang"/>
+<meta name="twitter:description" content="Intro: I will write in this post about some useful concept you need for building web application in golang. Also I will compare such approaches to other languages and upstream approaches from my developer carreer into opensource world.
+#1) Web toolkit are the golang minimalist answer against complexity of frameworks
+In our modern days, some people think that choosing a framework is a safe choice. But this can be a quite considerable risk, since you embark in a mental pattern, bugs and coding style that you might don&rsquo;t know if it fits for you."/>
+
+    <meta property="og:title" content="Some fondamentals for web application and microservices in golang" />
+<meta property="og:description" content="Intro: I will write in this post about some useful concept you need for building web application in golang. Also I will compare such approaches to other languages and upstream approaches from my developer carreer into opensource world.
+#1) Web toolkit are the golang minimalist answer against complexity of frameworks
+In our modern days, some people think that choosing a framework is a safe choice. But this can be a quite considerable risk, since you embark in a mental pattern, bugs and coding style that you might don&rsquo;t know if it fits for you." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://mallozup.github.io/posts/fondamentals-webapp-golang/" />
+<meta property="article:published_time" content="2021-03-29T10:49:37+02:00" />
+<meta property="article:modified_time" content="2021-03-29T10:49:37+02:00" />
+
+
+    
+      <base href="https://mallozup.github.io/posts/fondamentals-webapp-golang/">
+    
+    <title>
+  Some fondamentals for web application and microservices in golang · Dario Maiocchi
+</title>
+
+    
+      <link rel="canonical" href="https://mallozup.github.io/posts/fondamentals-webapp-golang/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://mallozup.github.io/css/coder.min.28d751104f30c16da1aa1bb04015cbe662cacfe0d1b01af4f2240ad58580069c.css" integrity="sha256-KNdREE8wwW2hqhuwQBXL5mLKz&#43;DRsBr08iQK1YWABpw=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+      <link rel="stylesheet" href="https://mallozup.github.io/css/custom.css" />
+    
+
+    
+    
+    <link rel="icon" type="image/png" href="https://mallozup.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://mallozup.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.56.3" />
+  </head>
+
+  <body class=" ">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://mallozup.github.io/">
+      Dario Maiocchi
+    </a>
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://mallozup.github.io/ac/">Achivements</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://mallozup.github.io/posts/">Technical Blog</a>
+          </li>
+        
+      
+      
+    </ul>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Some fondamentals for web application and microservices in golang</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2021-03-29T10:49:37&#43;02:00'>
+                March 29, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              2 minutes read
+            </span>
+          </div>
+          <div class="categories">
+  <i class="fas fa-folder"></i>
+    <a href="https://mallozup.github.io/categories/web/">web</a>
+      <span class="separator">•</span>
+    <a href="https://mallozup.github.io/categories/go/">go</a></div>
+
+          
+        </div>
+      </header>
+
+      <div>
+        
+
+<h1 id="intro">Intro:</h1>
+
+<p>I will write in this post about some useful concept you need for building web application in golang.
+Also I will compare such approaches to other languages and upstream approaches from my developer carreer into opensource world.</p>
+
+<p>#1) Web toolkit are the golang minimalist answer against complexity of frameworks</p>
+
+<p>In our modern days, some people think that choosing a framework is a safe choice.
+But this can be a quite considerable risk, since you embark in a mental pattern, bugs and coding style that you might don&rsquo;t know if it fits for you.</p>
+
+<p>As pro for frameworks, it is true that one don&rsquo;t want  to reinvent the wheel each time.
+But as contra, you inherit a huge complexity and bugs for free!</p>
+
+<p>In this context, in golang has emerged the concept of &ldquo;web toolkit&rdquo;.</p>
+
+<p>Gorilla is one developed by google. <a href="https://www.gorillatoolkit.org/">https://www.gorillatoolkit.org/</a></p>
+
+<p>Such approach is used in other contexts like &ldquo;microservices&rdquo;, example: <a href="https://gokit.io/">https://gokit.io/</a></p>
+
+<p>A web-toolkit is a collection of tools/library you can plug to http, incrementally, without embarking on huge dependencies risk.</p>
+
+<p>If you neeed a http router, my personal suggestion is to use <code>gorilla/mux</code>webtoolkit or even <code>chi</code> as router.</p>
+
+<p><a href="https://www.gorillatoolkit.org/">https://www.gorillatoolkit.org/</a> or <a href="https://github.com/go-chi/chi">https://github.com/go-chi/chi</a></p>
+
+<p>Both are safe choices because  they aren&rsquo;t a framework and they use the standard go handlers HTTP handlers signature, so in case want to revert your choices, you can still swap them without much hassle.</p>
+
+<p>##2) Templating:</p>
+
+<p>WIP</p>
+
+      </div>
+
+      <footer>
+        
+
+
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+      <p>free software, free thoughts</p>
+    
+     © 2021
+    
+       · 
+    
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+
+  </body>
+
+</html>
