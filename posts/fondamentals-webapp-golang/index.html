@@ -12,11 +12,11 @@
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Some fondamentals for web application and microservices in golang"/>
 <meta name="twitter:description" content="Intro: I will write in this post about some useful concept you need for building web application in golang. Also I will compare such approaches to other languages and upstream approaches from my developer carreer into opensource world.
-1) Web toolkit are the golang minimalist answer against complexity of frameworks Choosing a framework is a safe choice. People has already solved the problem for you. Really ?? This can be quite considerable risk, since you embark in a mental pattern, bugs and coding style that you might don&rsquo;t know if it fits for you."/>
+1) Web toolkit are the golang minimalist answer against complexity of frameworks Choosing a framework is a safe choice. People has already solved the problem for you. Really ?? It depends. Adopting a framework can be quite considerable risk."/>
 
     <meta property="og:title" content="Some fondamentals for web application and microservices in golang" />
 <meta property="og:description" content="Intro: I will write in this post about some useful concept you need for building web application in golang. Also I will compare such approaches to other languages and upstream approaches from my developer carreer into opensource world.
-1) Web toolkit are the golang minimalist answer against complexity of frameworks Choosing a framework is a safe choice. People has already solved the problem for you. Really ?? This can be quite considerable risk, since you embark in a mental pattern, bugs and coding style that you might don&rsquo;t know if it fits for you." />
+1) Web toolkit are the golang minimalist answer against complexity of frameworks Choosing a framework is a safe choice. People has already solved the problem for you. Really ?? It depends. Adopting a framework can be quite considerable risk." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://mallozup.github.io/posts/fondamentals-webapp-golang/" />
 <meta property="article:published_time" content="2021-03-29T10:49:37+02:00" />
@@ -128,13 +128,16 @@ Also I will compare such approaches to other languages and upstream approaches f
 
 <h1 id="1-web-toolkit-are-the-golang-minimalist-answer-against-complexity-of-frameworks">1) Web toolkit are the golang minimalist answer against complexity of frameworks</h1>
 
-<p>Choosing a framework is a safe choice. People has already solved the problem for you. Really ??
-This can be quite considerable risk, since you embark in a mental pattern, bugs and coding style that you might don&rsquo;t know if it fits for you.</p>
+<p>Choosing a framework is a safe choice. People has already solved the problem for you. Really ?? It depends.
+Adopting a framework can be quite considerable risk. It offers you an huge amount of feature thaty perhaps you will even don&rsquo;t need.
+This is why also application are built as microservice patterns, instead of monolith frameworks.</p>
+
+<p>Within a framework you embark in a mental pattern, bugs and coding style that you might don&rsquo;t know if it fits for you. Upgrade/update becomes problem.</p>
 
 <p>As pro for frameworks, it is true that one don&rsquo;t want  to reinvent the wheel each time.
-But as contra, you inherit a huge complexity and bugs for free!</p>
+But as contra, you inherit a huge complexity and bugs for free.</p>
 
-<p>In this context, in golang has emerged the concept of &ldquo;web toolkit&rdquo;.</p>
+<p>For these reasons, in golang minimalism, has emerged the concept of &ldquo;web toolkit&rdquo;.</p>
 
 <p>Gorilla is one developed by google. <a href="https://www.gorillatoolkit.org/">https://www.gorillatoolkit.org/</a></p>
 
@@ -146,7 +149,7 @@ But as contra, you inherit a huge complexity and bugs for free!</p>
 
 <p><a href="https://www.gorillatoolkit.org/">https://www.gorillatoolkit.org/</a> or <a href="https://github.com/go-chi/chi">https://github.com/go-chi/chi</a></p>
 
-<p>Both are safe choices because  they aren&rsquo;t a framework and they use the standard go handlers HTTP handlers signature, so in case want to revert your choices, you can still swap them without much hassle.</p>
+<p>Both are safe choices because they aren&rsquo;t a framework and they use the standard go handlers HTTP signature, so in case want to revert your choices, you can still swap them without much hassle.</p>
 
 <h1 id="2-templating">2) Templating:</h1>
 

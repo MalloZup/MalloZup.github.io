@@ -18,7 +18,7 @@
       
       <guid>https://mallozup.github.io/posts/fondamentals-webapp-golang/</guid>
       <description>Intro: I will write in this post about some useful concept you need for building web application in golang. Also I will compare such approaches to other languages and upstream approaches from my developer carreer into opensource world.
-1) Web toolkit are the golang minimalist answer against complexity of frameworks Choosing a framework is a safe choice. People has already solved the problem for you. Really ?? This can be quite considerable risk, since you embark in a mental pattern, bugs and coding style that you might don&amp;rsquo;t know if it fits for you.</description>
+1) Web toolkit are the golang minimalist answer against complexity of frameworks Choosing a framework is a safe choice. People has already solved the problem for you. Really ?? It depends. Adopting a framework can be quite considerable risk.</description>
     </item>
     
   </channel>
